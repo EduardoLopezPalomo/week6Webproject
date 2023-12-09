@@ -79,9 +79,6 @@ app.post('/vehicle/add', (req: Request, res: Response) => {
       vehicleList.push(newVehicle);
       res.status(201).json({message:'Vehicle added'});
     }
-    for(let i =0;i<vehicleList.length;i++){
-        console.log(vehicleList[i]);
-    }
   } else {
     res.status(400).json({ message: 'Missing or invalid vehicle data' });
   }
@@ -92,6 +89,7 @@ app.get('/vehicle/search/:model', (req: Request, res: Response) => {
     const foundVehicle = vehicleList.find((vehicle) => vehicle.model === model);
 
     if (foundVehicle) {
+      console.log(foundVehicle);
         if(foundVehicle instanceof Car){
             let responseVehicle: Car = {
                 model: foundVehicle.model,
@@ -120,7 +118,7 @@ app.get('/vehicle/search/:model', (req: Request, res: Response) => {
                 wingspan: foundVehicle.wingspan,
             };
             res.status(200).json(responseVehicle);
-        } else{
+        } else if(foundVehicle instanceof Vehicle){
             let responseVehicle: Vehicle = {
                 model: foundVehicle.model,
                 color: foundVehicle.color,
