@@ -49,7 +49,7 @@ app.use(express.json());
 app.get('/hello', (req: Request, res: Response) => {
 
   const greeting: Greeting = new GreetingMessage('Hello world');
-  res.send(greeting);
+  res.send({message: 'Hello world'});
 });
 
 let vehicleList: (Car | Boat | Plane | Vehicle)[] = [];
