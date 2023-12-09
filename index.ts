@@ -89,7 +89,6 @@ app.get('/vehicle/search/:model', (req: Request, res: Response) => {
     const foundVehicle = vehicleList.find((vehicle) => vehicle.model === model);
 
     if (foundVehicle) {
-      console.log(foundVehicle);
         if(foundVehicle instanceof Car){
             let responseVehicle: Car = {
                 model: foundVehicle.model,
